@@ -328,7 +328,8 @@ export default function Profile() {
                 Notifications
               </h3>
               <p className="mt-1 text-sm text-gray-600">
-                Decide which communications you'd like to receive and how.
+                Decide which communications you`&apos;`d like to receive and
+                how.
               </p>
             </div>
           </div>
