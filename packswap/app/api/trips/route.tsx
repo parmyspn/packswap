@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import schema from "./schema";
 import prisma from "../../../lib/prisma";
 
 export async function GET(request: NextRequest) {
@@ -9,9 +8,10 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const validation = schema.safeParse(body);
+  //const validation = schema.safeParse(body);
+  /*
   if (!validation.success)
-    return NextResponse.json(validation.error.errors, { status: 404 });
+    return NextResponse.json(validation.error.errors, { status: 404 });*/
 
   const newTrip = await prisma.trip.create({
     data: {
