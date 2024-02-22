@@ -26,6 +26,7 @@ model User {
   firstname          String
   lastname      String
   email         String   @unique
+  phoneNo       String
   passportNo    String
   nationality   String
   dateOfBirth   DateTime
