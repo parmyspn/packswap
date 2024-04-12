@@ -15,13 +15,15 @@ export async function POST(request: NextRequest) {
 
   const newTrip = await prisma.trip.create({
     data: {
-      travelerFirstName: body.travelerFirstName,
-      travelerLastName: body.travelerLastName,
+      travellerId: body.traverllerId,
       sendFrom: body.sendFrom,
       sendTo: body.sendTo,
       weight: parseFloat(body.weight),
+      pricePerKg: parseFloat(body.pricePerKg),
+      flightAirline: body.flightAirline,
       flightNo: body.flightNo,
-      flightDateTime: body.flightDataTime,
+      departureDateTime: body.departureDateTime,
+      arrivalDateTime: body.arrivalDateTime,
     },
   });
   return NextResponse.json(newTrip, { status: 201 });

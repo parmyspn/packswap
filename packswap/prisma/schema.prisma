@@ -12,13 +12,17 @@ datasource db {
 
 model Trip {
   id        String     @default(cuid()) @id
-  travelerFirstName  String
-  travelerLastName String
+  traveller User @relation(fields: [travellerId], references: [id])
+  travellerId String 
   sendFrom     String
   sendTo    String
   weight   Float
+  pricePerKg Float
+  flightAirline String
   flightNo String
-  flightDateTime DateTime
+  departureDateTime DateTime
+  arrivalDateTime DateTime
+  bookedtrip BookedTrip[]
 }
 
 model User {
@@ -31,4 +35,14 @@ model User {
   nationality   String
   dateOfBirth   DateTime
   isVerified    Boolean @default(false)
+  trips Trip[]
+  bookedtrip BookedTrip[]
+}
+
+model BookedTrip {
+    id String @default(cuid()) @id
+    sender User @relation(fields: [senderId], references: [id])
+    senderId String
+    trip Trip @relation(fields: [tripId], references: [id])
+    tripId String
 }

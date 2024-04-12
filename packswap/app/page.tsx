@@ -1,13 +1,15 @@
 import Image from "next/image";
+import { authOptions } from "./api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
   return (
     <div>
-      <header></header>
       <main>
-        <div className="grid text-center lg:w-full lg:mb-0 lg:grid-cols-2 lg:text-left h-screen flex justify-center items-center">
+        <div className="text-center lg:w-full lg:mb-0 lg:grid-cols-2 lg:text-left h-screen flex justify-center items-center">
           <a
-            href=""
+            href="/trips"
             className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
             target="_blank"
             rel="noopener noreferrer"
